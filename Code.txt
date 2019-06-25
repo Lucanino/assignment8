@@ -5,8 +5,8 @@ BiocManager::install("Biostrings")
 #Installieren von Biostrings
 library(Biostrings)
 #einschalten von Biostrings
-s1 <- "GAATTC"
-s2 <- "GATTA"
+s1 <- "GAATC"
+s2 <- "CATAC"
 #definieren von zu alignierenden Paketen
 sigma <- nucleotideSubstitutionMatrix(match = 10, mismatch = -5, baseOnly = TRUE)
 #sigma ist eine Matrix für die Scores des alignments
@@ -17,7 +17,7 @@ sigma["G","A"] <- 0
 #in den Vorgaben der Vorlesung wurden manche mismatch-Werte anders bewertet, dementsprechend werden die Werte hier geändert
 sigma
 #sigma anzeigen
-alignment <- pairwiseAlignment(s1, s2, substitutionMatrix = sigma, gapOpening = -2, gapExtension = -8, scoreOnly = FALSE)
+alignment <- pairwiseAlignment(s1, s2, substitutionMatrix = sigma, gapOpening = -4, gapExtension = -4, scoreOnly = FALSE)
 #jetzt wird ein alignment zwischen den beiden Sequenzen erzeugt
 alignment
 #Anzeigen des alignment mit Score
@@ -27,8 +27,8 @@ BiocManager::install("DECIPHER")
 #Installieren von Decipher
 library(DECIPHER) 
 # festlegen des Verzeichnisses
-# funktioniert bei mir leider nicht: fas <- "C:\Users\Andrea Nino\Desktop\ (1)\Studium\Biologie\Bioinformatik\Übung 8\FOXA1_seq.fasta" 
-# Dateipfadvariable für die verwendete Datei
+# fas <- "C:/Users/Andrea Nino/Desktop/ (1)/Studium/Biologie/Bioinformatik/Übung 8/FOXA1_seq.fasta" 
+# Dateipfadvariable für die verwendete Datei(andere Möglichkeit für eigene Daten)
 fas <- system.file("extdata", "50S_ribosomal_protein_L2.fas", package="DECIPHER")
 #Dateipfadvariable für die verwendete Datei, mit system.file wird eine Beispieldatei aufgerufen
 dna <- readDNAStringSet(fas)
